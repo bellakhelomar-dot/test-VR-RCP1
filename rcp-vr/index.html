@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RCP en VR — Arrêt cardiaque sur le terrain</title>
+<style>
+  html,body{margin:0;height:100%;background:#0a1222;color:#e2e8f0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overflow:hidden}
+  canvas{display:block}
+  #menu{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at top,#16294d,#0a1222);overflow:auto;z-index:5}
+  .card{max-width:760px;width:calc(100% - 32px);margin:16px;padding:28px 32px;background:#0f1b33;border:1px solid #23375e;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  h1{margin:0 0 4px;font-size:30px}
+  .sub{color:#7dd3fc;margin:0 0 14px;font-weight:600}
+  p{line-height:1.5;color:#cbd5e1;margin:8px 0}
+  fieldset{border:1px solid #23375e;border-radius:12px;margin:14px 0;padding:10px 16px}
+  legend{padding:0 8px;color:#93c5fd;font-weight:700}
+  label{display:block;margin:6px 0;cursor:pointer}
+  small{color:#94a3b8}
+  .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+  button{font:700 18px system-ui;padding:14px 22px;border-radius:12px;border:0;cursor:pointer;color:#fff;background:#2563eb}
+  button#btn-vr{background:#16a34a;flex:1;min-width:240px;font-size:20px}
+  button#btn-desktop{background:#334155}
+  button:disabled{background:#475569;cursor:not-allowed}
+  .warn{font-size:13px;color:#fbbf24;border-top:1px solid #23375e;margin-top:16px;padding-top:12px}
+</style>
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+<div id="menu">
+  <div class="card">
+    <h1>❤️ RCP en VR</h1>
+    <p class="sub">Arrêt cardiaque sur un terrain de sport — Meta Quest 2</p>
+    <p>Un joueur s'effondre en plein match, comme lors de l'Euro 2020 (juin 2021). Vous êtes le premier secouriste :
+       vérifiez la conscience, alertez, réalisez les compressions (mesurées avec vos manettes), les insufflations, posez le DAE et déclenchez le choc.</p>
+
+    <fieldset><legend>Mode</legend>
+      <label><input type="radio" name="mode" value="guided" checked> <b>Entraînement guidé</b> — étapes, cadran de fréquence, jauge de profondeur, métronome <small>(110/min)</small></label>
+      <label><input type="radio" name="mode" value="exam"> <b>Évaluation</b> — aucune aide à l'écran, indices payants (−3 points)</label>
+    </fieldset>
+    <fieldset><legend>Compressions</legend>
+      <label><input type="radio" name="input" value="hands" checked> <b>Mouvement des mains</b> — manettes l'une sur l'autre, poussez vers le bas de 5–6 cm</label>
+      <label><input type="radio" name="input" value="trigger"> <b>Gâchette</b> — une pression = une compression <small>(assis / mobilité réduite)</small></label>
+    </fieldset>
+    <fieldset><legend>Options</legend>
+      <label><input id="opt-vent" type="checkbox" checked> Ventilations 30:2 (décocher = compressions seules)</label>
+      <label><input id="opt-voice" type="checkbox" checked> Voix de synthèse en français</label>
+      <label><input id="opt-metro" type="checkbox" checked> Métronome sonore (mode guidé)</label>
+    </fieldset>
+
+    <div class="row">
+      <button id="btn-vr">🥽 Entrer en VR</button>
+      <button id="btn-desktop">🖥️ Aperçu sur écran</button>
+    </div>
+    <p class="warn">Outil pédagogique : il ne remplace pas une formation certifiée aux premiers secours (Croix-Rouge, Protection civile, SST…). En cas d'arrêt cardiaque réel : appelez le 112 (ou le numéro d'urgence local), commencez les compressions et utilisez un DAE.<br>
+    Aperçu sur écran : clic = gâchette, <b>Espace</b> = compression, maintenir le clic sur la bouche = insufflation.</p>
+  </div>
+</div>
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>
